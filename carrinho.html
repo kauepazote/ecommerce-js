@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="carrinho.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>🛒 Meu Carrinho</h1>
+    </header>
+
+    <main class="container">
+
+        <section class="produtos-carrinho">
+            <h2>Produtos</h2>
+
+            <div class="carrinho-vazio">
+                <p>Seu carrinho está vazio</p>
+             <a href="index.html" class="btn-voltar">Voltar para loja</a>
+            </div>
+
+        </section>
+
+        <!-- Resumo do Pedido -->
+        <aside class="resumo">
+            <h2>Resumo do Pedido</h2>
+
+            <div class="linha">
+                <span>Subtotal</span>
+                <span>R$ 0,00</span>
+            </div>
+
+            <div class="linha">
+                <span>Frete</span>
+                <span>R$ 8,00</span>
+            </div>
+
+            <hr>
+
+            <div class="linha total">
+                <span>Total</span>
+                <span>R$ 0,00</span>
+            </div>
+
+            <button class="btn-finalizar">Finalizar Compra</button>
+        </aside>
+
+    </main>
+    
+ <script>
+    
+   const teste = localStorage.getItem("carrinho");
+
+   console.log(teste)
+
+ </script>
+
+</body>
+</html>
