@@ -1,7 +1,5 @@
 const url = 'https://dummyjson.com/products'
 
-const carrinho_usuario = [];
-
 
 
  async function consumir(){
@@ -37,6 +35,10 @@ const carrinho_usuario = [];
 
    const favoritar = document.createElement("img")
 
+  
+  titulo.classList.add("titulo");
+  preco.classList.add("preco");
+
 
    comprar.classList.add("comprar")
    carinho.classList.add("adicionar")
@@ -44,7 +46,6 @@ const carrinho_usuario = [];
    comprar.innerText = "Comprar"
    carinho.innerText = "Adicionar ao Carrinho"
 
-  carrinho
    
     img.src = produtos.thumbnail;
     img.alt = produtos.title;
@@ -79,11 +80,6 @@ const carrinho_usuario = [];
   }
   favorito();
 
-
-
-
-
-    
   titulo.append(produtos.title)
 
   descricao.append(produtos.description)
@@ -111,30 +107,50 @@ function carrinho(){
 
   let escolha_carrinho = document.getElementById("produtos")
 
-
-  escolha_carrinho.addEventListener("click",function(){
+  escolha_carrinho.addEventListener("click",function(evento){
     
-      
-      
-  
+  const botao = evento.target.closest(".adicionar");
 
-    
+  if(!botao) return; // impede de acontecer de continuar a função;
 
-    localStorage.setItem("carrinho",JSON.stringify(carrinho_usuario))
 
-    console.log(produto)
+  const infoTotal = botao.parentElement;
+
+  const carrinho_usuario = JSON.parse(localStorage.getItem("teste")) || [];
+
+  const infoImagem = infoTotal.getElementsByClassName("imagem_produto")[0].src;
+
+  const infoNome = infoTotal.getElementsByClassName("titulo")[0].innerText;
+
+  const infoPreco = infoTotal.getElementsByClassName("preco")[0].innerText
+
+  console.log(infoImagem)
+  console.log(infoNome)
+  console.log(infoPreco)
+
+const informacoes = {
+
+  imagem: infoImagem,
+  nome: infoNome,
+  preco:infoPreco
+
+}
+
+carrinho_usuario.push(informacoes);
+
+  localStorage.setItem("teste",JSON.stringify(carrinho_usuario))
+
+ 
 
   })
 
 
 }
 
-console.log(carrinho_usuario)
-
-let teste = document.getElementById("carrinho");
+let entrar_carrinho = document.getElementById("carrinho");
 
 
-teste.addEventListener("click",function(){
+entrar_carrinho.addEventListener("click",function(){
 
   window.location.href = "carrinho.html"
 
