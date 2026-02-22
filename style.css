@@ -34,7 +34,17 @@ gap:30px;
 .icones img{
 width:40px;
 cursor:pointer;
+
 }
+
+.logo{
+    display: flex;
+    align-items: center;
+    height: 160px;
+    width: auto;
+    margin-top: 15px;
+}
+
 
 .produtos{
 display:flex;
@@ -94,10 +104,9 @@ cursor:pointer;
 
 .favoritar {
     position: absolute;
-    top: 15px;    /* Distância do topo */
-    right: 15px;  /* Distância da direita */
-    
-    height: 25px; /* Ajuste o tamanho conforme preferir */
+    top: 15px;
+    right: 15px;  
+    height: 25px; 
     width: 25px;
     cursor: pointer;
 }
