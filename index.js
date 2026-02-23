@@ -1,7 +1,5 @@
 const url = 'https://dummyjson.com/products'
 
-
-
  async function consumir(){
     const resposta = await fetch(url)
   
@@ -12,10 +10,8 @@ const url = 'https://dummyjson.com/products'
 
   const card_produtos = document.getElementById("produtos");
 
-
   
-
-     resp.products.forEach(function(produtos){
+     resp.products.forEach(function(produtos,posicao){
 
     const div = document.createElement("div")
 
@@ -34,7 +30,8 @@ const url = 'https://dummyjson.com/products'
    const carinho = document.createElement("button");
 
    const favoritar = document.createElement("img")
-
+    
+   const id = posicao
   
   titulo.classList.add("titulo");
   preco.classList.add("preco");
@@ -46,11 +43,13 @@ const url = 'https://dummyjson.com/products'
    comprar.innerText = "Comprar"
    carinho.innerText = "Adicionar ao Carrinho"
 
+   id.innerText = posicao;
    
     img.src = produtos.thumbnail;
     img.alt = produtos.title;
     img.classList.add("imagem_produto")
 
+  div.dataset.id = id;
   
   favoritar.classList.add("favoritar")
   favoritar.src = "img/coracao.png"
@@ -85,7 +84,6 @@ const url = 'https://dummyjson.com/products'
   descricao.append(produtos.description)
 
   preco.append(produtos.price);
-    
 
   div.append(favoritar)
   div.append(img)
@@ -95,11 +93,8 @@ const url = 'https://dummyjson.com/products'
   div.append(comprar)
   div.append(carinho)
 
-    
-  card_produtos.appendChild(div)
-
-    
-    })
+card_produtos.appendChild(div)
+  })
 
  }
 
@@ -108,9 +103,7 @@ function carrinho(){
   let escolha_carrinho = document.getElementById("produtos")
 
   escolha_carrinho.addEventListener("click",function(evento){
-
-    
-    
+        
   const botao = evento.target.closest(".adicionar");
 
   if(!botao) return; // impede de acontecer de continuar a função;
@@ -119,7 +112,9 @@ function carrinho(){
 
   const infoTotal = botao.parentElement;
 
-  const carrinho_usuario = JSON.parse(localStorage.getItem("teste")) || [];
+  const carrinho_usuario = JSON.parse(localStorage.getItem("Produtos")) || [];
+
+  const infoId = infoTotal.dataset.id
 
   const infoImagem = infoTotal.getElementsByClassName("imagem_produto")[0].src;
 
@@ -127,37 +122,26 @@ function carrinho(){
 
   const infoPreco = infoTotal.getElementsByClassName("preco")[0].innerText
 
-  console.log(infoImagem)
-  console.log(infoNome)
-  console.log(infoPreco)
-
 const informacoes = {
-
+  id: infoId,
   imagem: infoImagem,
   nome: infoNome,
   preco:infoPreco
-
 }
 
 carrinho_usuario.push(informacoes);
 
-  localStorage.setItem("teste",JSON.stringify(carrinho_usuario))
-
- 
+  localStorage.setItem("Produtos",JSON.stringify(carrinho_usuario))
 
   })
-
-
 }
 
 let entrar_carrinho = document.getElementById("carrinho");
-
 
 entrar_carrinho.addEventListener("click",function(){
 
   window.location.href = "carrinho.html"
 
 })
-
 consumir();
 carrinho();

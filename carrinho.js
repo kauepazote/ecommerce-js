@@ -1,6 +1,4 @@
-
-
-let carrinho = JSON.parse(localStorage.getItem("teste")) || [];
+let carrinho = JSON.parse(localStorage.getItem("Produtos")) || [];
 
 
 let mostrar = document.getElementById("carrinho");
@@ -16,7 +14,9 @@ carrinho.forEach(item => {
 
    let div = document.createElement("div")
    
-   div.classList.add("teste");
+   div.classList.add("produtos");
+
+   div.dataset.id = item.id;
 
    botao.innerText = "Remover"
    
@@ -42,25 +42,47 @@ carrinho.forEach(item => {
 
 function removerElemento(){
 
-let carrinho = document.getElementById("carrinho")
+let produtos = document.getElementById("carrinho")
 
 
-carrinho.addEventListener("click",function(evento){
+produtos.addEventListener("click",function(evento){
 
 let botao = evento.target.closest(".remover_item")
 
 if(!botao) return;
 
-const conteudo = evento.target.closest(".teste")
+const conteudo = evento.target.closest(".produtos")
 
 
-conteudo.remove()
+let id = conteudo.dataset.id;
 
+carrinho = carrinho.filter(item => item.id !== id);
 
+localStorage.setItem("Produtos", JSON.stringify(carrinho));
+
+conteudo.remove();
 
 })
 
 }
 
+ function ValorCarrinho(){
+  
+
+ carrinho.forEach(function(item){
+
+ let subtotal = document.createElement("h1")
+
+ subtotal.innerText = item.preco
+
+ console.log(subtotal)
+ })
+
+ }
+
+
+
+
 mostrarElemento();
 removerElemento();
+ValorCarrinho();
