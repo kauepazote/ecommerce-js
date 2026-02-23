@@ -108,11 +108,14 @@ function carrinho(){
   let escolha_carrinho = document.getElementById("produtos")
 
   escolha_carrinho.addEventListener("click",function(evento){
+
+    
     
   const botao = evento.target.closest(".adicionar");
 
   if(!botao) return; // impede de acontecer de continuar a função;
 
+  alert("item adicionado ao carrinho")
 
   const infoTotal = botao.parentElement;
 

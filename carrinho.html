@@ -7,7 +7,8 @@
 </head>
 <body>
 
-    <header class="header">
+    <header>
+        <img src="/img/logo.png" class="logo" alt="">
         <h1>Meu Carrinho</h1>
     </header>
 
@@ -15,15 +16,16 @@
 
         <section class="produtos-carrinho">
             <h2>Produtos</h2>
+            <a href="index.html" class="voltar">Voltar para loja</a>
 
-            <div class="carrinho-vazio">
-                <p>Seu carrinho está vazio</p>
-             <a href="index.html" class="btn-voltar">Voltar para loja</a>
+            <div id="carrinho">
+                
+             
             </div>
 
         </section>
 
-        <!-- Resumo do Pedido -->
+        
         <aside class="resumo">
             <h2>Resumo do Pedido</h2>
 
@@ -44,18 +46,12 @@
                 <span>R$ 0,00</span>
             </div>
 
-            <button class="btn-finalizar">Finalizar Compra</button>
+            <button class="finalizar">Finalizar Compra</button>
         </aside>
 
     </main>
     
- <script>
-    
-   const teste = localStorage.getItem("teste");
 
-   console.log(teste)
-
- </script>
-
+<script src="carrinho.js"></script>    
 </body>
 </html>

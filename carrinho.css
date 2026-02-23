@@ -1,4 +1,4 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,11 +9,20 @@ body {
     background-color: #f1f5f9;
 }
 
-.header {
+header {
     background-color: #1e293b;
     color: white;
     padding: 20px;
     text-align: center;
+}
+
+.logo{  
+    display: flex;
+    align-items: center;
+    height: 10px;
+    width: auto;
+    margin-top: 15px;
+
 }
 
 .container {
@@ -26,6 +35,7 @@ body {
 
 .produtos-carrinho {
     flex: 2;
+    text-align: center;
     background: white;
     padding: 30px;
     border-radius: 12px;
@@ -36,13 +46,41 @@ body {
     margin-bottom: 20px;
 }
 
-.carrinho-vazio {
+#carrinho {
     text-align: center;
-    padding: 60px 0;
+    padding: 60px;
     color: #64748b;
 }
 
-.btn-voltar {
+.teste{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 8px;
+    height: 230px;
+    margin: 10px;
+    width: auto;
+}
+
+.teste img{
+    height: 100px;
+    object-fit: contain;
+}
+
+.remover_item {
+    padding: 10px 15px;
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+.voltar {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
@@ -53,7 +91,7 @@ body {
     transition: 0.3s;
 }
 
-.btn-voltar:hover {
+.voltar:hover {
     background-color: #2563eb;
 }
 
@@ -84,7 +122,7 @@ body {
     color: #1e293b;
 }
 
-.btn-finalizar {
+.finalizar{
     width: 100%;
     padding: 12px;
     margin-top: 20px;
@@ -97,6 +135,6 @@ body {
     transition: 0.3s;
 }
 
-.btn-finalizar:hover {
+.finalizar:hover {
     background-color: #16a34a;
 }
