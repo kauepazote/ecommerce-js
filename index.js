@@ -105,16 +105,17 @@ function carrinho(){
   escolha_carrinho.addEventListener("click",function(evento){
         
   const botao = evento.target.closest(".adicionar");
-
   if(!botao) return; // impede de acontecer de continuar a função;
 
-  alert("item adicionado ao carrinho")
+  
 
   const infoTotal = botao.parentElement;
 
   const carrinho_usuario = JSON.parse(localStorage.getItem("Produtos")) || [];
 
-  const infoId = infoTotal.dataset.id
+  
+
+  const infoId = infoTotal.dataset.id;
 
   const infoImagem = infoTotal.getElementsByClassName("imagem_produto")[0].src;
 
@@ -126,12 +127,21 @@ const informacoes = {
   id: infoId,
   imagem: infoImagem,
   nome: infoNome,
-  preco:infoPreco
+  preco:infoPreco,
 }
 
-carrinho_usuario.push(informacoes);
+let produto_duplicado = carrinho_usuario.some(item=> item.id == informacoes.id);
+
+if(!produto_duplicado){
+  alert("item adicionado ao carrinho")
+
+  carrinho_usuario.push(informacoes);
 
   localStorage.setItem("Produtos",JSON.stringify(carrinho_usuario))
+}
+else{
+  alert("Produto Já Adicionado no carrinho")
+}
 
   })
 }

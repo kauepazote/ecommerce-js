@@ -11,12 +11,19 @@ carrinho.forEach(item => {
    let nome = document.createElement("h1");
    let preco = document.createElement("h2");
    let botao = document.createElement("button")
-
+   let quantidade = document.createElement("input")
    let div = document.createElement("div")
    
    div.classList.add("produtos");
 
+   preco.classList.add("preco")
+
    div.dataset.id = item.id;
+   
+   quantidade.classList.add("quantidade")
+   quantidade.value = 1;
+   quantidade.min = 1;
+   quantidade.type = "number"
 
    botao.innerText = "Remover"
    
@@ -31,6 +38,7 @@ carrinho.forEach(item => {
     div.append(img);
     div.append(nome);
     div.append(preco);
+    div.append(quantidade)
     div.append(botao);
 
     mostrar.appendChild(div)
@@ -56,27 +64,41 @@ const conteudo = evento.target.closest(".produtos")
 
 let id = conteudo.dataset.id;
 
-carrinho = carrinho.filter(item => item.id !== id);
+carrinho = carrinho.filter(item => item.id != id);
 
 localStorage.setItem("Produtos", JSON.stringify(carrinho));
 
 conteudo.remove();
+calcularTotal();
 
 })
 
 }
-
- function ValorCarrinho(){
+ function calcularTotal(){
   
+let total = 0;
 
- carrinho.forEach(function(item){
 
- let subtotal = document.createElement("h1")
+carrinho.forEach(function(item){
 
- subtotal.innerText = item.preco
+    total+= Number(item.preco)
 
- console.log(subtotal)
- })
+});
+
+
+
+let mostrar = document.getElementById("preco_produto");
+
+
+mostrar.innerHTML = total.toFixed(2)
+
+
+let preco_final = document.getElementById("total")
+
+
+let final = total + 8;
+
+preco_final.innerText = final.toFixed(2)
 
  }
 
@@ -85,4 +107,4 @@ conteudo.remove();
 
 mostrarElemento();
 removerElemento();
-ValorCarrinho();
+calcularTotal();
