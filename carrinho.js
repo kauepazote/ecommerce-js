@@ -78,10 +78,12 @@ calcularTotal();
   
 let total = 0;
 
-
 carrinho.forEach(function(item){
 
-    total+= Number(item.preco)
+ 
+    
+
+    total+= Number(item.preco);
 
 });
 
@@ -101,7 +103,6 @@ let final = total + 8;
 preco_final.innerText = final.toFixed(2)
 
  }
-
 
 
 
